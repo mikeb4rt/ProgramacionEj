@@ -1,6 +1,6 @@
 package Coche;
 
-public abstract class CocheAbstracto {
+public abstract class CocheAbstracto implements InterfaceCoche {
     protected String marca;
     protected String model;
     protected TipusCanvi tipuscanvi;
@@ -9,18 +9,5 @@ public abstract class CocheAbstracto {
         this.marca = marca;
         this.model = model;
         this.tipuscanvi = tipuscanvi;
-    }
-
-    //Getters
-    public String getMarca(){
-        return this.marca;
-    }
-
-    public String getModel(){
-        return this.model;
-    }
-
-    public TipusCanvi getTipuscanvi(){
-        return this.tipuscanvi;
     }
 }
