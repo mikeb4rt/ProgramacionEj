@@ -5,9 +5,9 @@ public class CotxeSegonaPart_Miguel_Serna extends Coche_Miguel_Serna {
     protected Marcha marcha;
 
     //Constructor
-    public CotxeSegonaPart_Miguel_Serna(String marca, String model, TipusCanvi tipuscanvi, EstadoMotorCoche estadocoche, Marcha marcha) {
+    public CotxeSegonaPart_Miguel_Serna(String marca, String model, TipusCanvi tipuscanvi, EstadoMotorCoche estadocoche) {
         super(marca, model, tipuscanvi, estadocoche);
-        this.marcha = marcha;
+        this.marcha = Marcha.N;
     }
 
 
