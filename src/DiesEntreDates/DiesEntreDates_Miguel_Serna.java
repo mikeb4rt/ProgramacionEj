@@ -1,26 +1,33 @@
 package DiesEntreDates;
 
 public class DiesEntreDates_Miguel_Serna extends CalcularDiesEntreDates{
-
     //Array con los dias de cada mes
     private final int[] diaMes = new int[]{31,28,31,30,31,30,31,31,30,31,30,31};
-
+    //private final int[] diesMesTraspass = new int[]{31,29,31,30,31,30,31,31,30,31,30,31};
 
     //Miramos los dias
     @Override
     protected int diesMes(int mes) {
         return this.diaMes[mes - 1];
+
+        //return this.diesMesNomal[mes - 1];
     }
 
     //Calcular los dias que quedan de mes
     @Override
     protected int diesMesInicial(DataXS dataXS) {
-        return  this.diesMes(dataXS.mes) - dataXS.dia;
+        if (!anyDeTraspas(dataXS.any)) {
+            diaMes[1] = 28;
+        } else diaMes[1] = 29;
+        return this.diesMes(dataXS.mes) - dataXS.dia;
     }
 
     //Calcular dias que han pasado del mes destino
     @Override
     protected int diesMesDesti(DataXS dataXS) {
+        if (!anyDeTraspas(dataXS.any)){
+            diaMes[1] = 28;
+        }else diaMes[1] = 29;
         return this.diaMes[dataXS.mes - 1] - (diesMes(dataXS.mes) - dataXS.dia);
     }
 
@@ -29,6 +36,9 @@ public class DiesEntreDates_Miguel_Serna extends CalcularDiesEntreDates{
     protected int diesResteAnyInicial(DataXS datainicial) {
         int diarestantsinici = this.diesMesInicial(datainicial);
         for (int i = datainicial.mes; i < 12; i++) {
+            if (!anyDeTraspas(datainicial.any)){
+                diaMes[1] = 28;
+            }else  diaMes[1] = 29;
             diarestantsinici += this.diaMes[i];
         }
         return diarestantsinici - this.diesMesInicial(datainicial);
@@ -39,7 +49,10 @@ public class DiesEntreDates_Miguel_Serna extends CalcularDiesEntreDates{
     protected int diesResteAnyDesti(DataXS datadesti) {
         int diesrestantsdesti = this.diesMesDesti(datadesti);
         for (int i = 0; i < datadesti.mes - 1; i++) {
-            diesrestantsdesti += diaMes[i];
+            if (!anyDeTraspas(datadesti.any)){
+                diaMes[1] = 28;
+            }else  diaMes[1] = 29;
+        diesrestantsdesti += diaMes[i];
         }
         return diesrestantsdesti - this.diesMesDesti(datadesti);
     }
