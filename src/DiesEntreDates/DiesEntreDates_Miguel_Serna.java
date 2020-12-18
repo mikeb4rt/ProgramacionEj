@@ -3,7 +3,6 @@ package DiesEntreDates;
 public class DiesEntreDates_Miguel_Serna extends CalcularDiesEntreDates{
     //Array con los dias de cada mes
     private final int[] diaMes = new int[]{31,28,31,30,31,30,31,31,30,31,30,31};
-    //private final int[] diesMesTraspass = new int[]{31,29,31,30,31,30,31,31,30,31,30,31};
 
     //Miramos los dias
     @Override
